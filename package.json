@@ -1,0 +1,77 @@
+{
+  "name": "mash",
+  "displayName": "Mash",
+  "description": "Provides syntax highlighting, formatting, and execution support for the Mash language.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "mash",
+        "aliases": [
+          "Mash",
+          "mash"
+        ],
+        "extensions": [
+          ".msh"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "icons/mash-icon.png",
+          "dark": "icons/mash-icon.png"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mash",
+        "scopeName": "source.mash",
+        "path": "./syntaxes/mash.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "mash.runFile",
+        "title": "Run Mash File"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "mash.runFile",
+          "when": "editorLangId == mash",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "mash.runFile",
+          "when": "editorLangId == mash"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "command": "mash.runFile",
+          "when": "editorLangId == mash"
+        }
+      ]
+    }
+  },
+  "activationEvents": [
+    "onLanguage:mash",
+    "onCommand:mash.runFile"
+  ],
+  "main": "./src/extension.js",
+  "scripts": {
+    "compile": "echo 'No build step needed for JS'",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.77.0"
+  }
+}
