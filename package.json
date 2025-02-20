@@ -2,13 +2,15 @@
   "name": "mash",
   "displayName": "Mash",
   "description": "Provides syntax highlighting, formatting, and execution support for the Mash language.",
-  "version": "1.0.0",
+  "publisher": "MisbahSarfaraz",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.97.0"
   },
   "categories": [
     "Programming Languages"
   ],
+  "icon": "icons/mash-icon.png",
   "contributes": {
     "languages": [
       {
@@ -62,6 +64,11 @@
       ]
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Okaymisba/mash"
+  },
+  "license": "MIT",
   "activationEvents": [
     "onLanguage:mash",
     "onCommand:mash.runFile"
