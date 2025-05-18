@@ -1,16 +1,13 @@
 const vscode = require('vscode');
-const { exec } = require('child_process');
+const path = require('path');
+const os = require('os');
 
 /**
  * Registers the "mash.runFile" command which runs a file with the .msh extension
- * using the "mash" command.
- *
- * The command is only enabled if a file is open in the editor. If no file is open,
- * the user is shown an error message.
+ * using the appropriate "mash" executable based on the operating system.
  *
  * @param {vscode.ExtensionContext} context - The extension context.
  */
-
 function activate(context) {
     let disposable = vscode.commands.registerCommand('mash.runFile', async () => {
         const editor = vscode.window.activeTextEditor;
@@ -27,7 +24,12 @@ function activate(context) {
             return;
         }
 
-        const command = `mash "${filePath}"`;
+        const isWindows = os.platform() === 'win32';
+        const mashExecutable = isWindows
+            ? path.join(context.extensionPath, 'bin', 'windows', 'mash.exe')
+            : path.join(context.extensionPath, 'bin', 'linux', 'mash');
+
+        const command = `"${mashExecutable}" "${filePath}"`;
 
         const terminal = vscode.window.createTerminal("Mash Terminal");
         terminal.sendText(command);
