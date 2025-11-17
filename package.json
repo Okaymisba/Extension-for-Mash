@@ -3,7 +3,7 @@
   "displayName": "Mash",
   "description": "Provides syntax highlighting, formatting, and execution support for the Mash language.",
   "publisher": "MisbahSarfaraz",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "engines": {
     "vscode": "^1.97.0"
   },
